@@ -35,7 +35,7 @@ class ParticipantController {
                             answer: true,
                         }
                     });
-                    if (validatedData.answer == (question === null || question === void 0 ? void 0 : question.answer)) {
+                    if (validatedData.answer.join("-") == (question === null || question === void 0 ? void 0 : question.answer)) {
                         yield ts.participant.create({
                             data: {
                                 firstName: validatedData.firstName,

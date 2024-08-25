@@ -27,14 +27,7 @@ const errorHandler = (method) => {
                 exception = err;
             }
             else if (err instanceof zod_1.ZodError) {
-                let error = { type: "Zod error", issues: [] };
-                err.issues.forEach(element => {
-                    error.issues.push({
-                        message: element.message,
-                        path: element.path[0],
-                    });
-                });
-                exception = new BadRequest_1.default("البيانات المقدمة خاطئة", error);
+                exception = new BadRequest_1.default("البيانات المقدمة خاطئة", null);
             }
             else {
                 exception = new InternalException_1.default("خطأ ما قد حدث", null);

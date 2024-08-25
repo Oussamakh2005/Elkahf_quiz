@@ -30,7 +30,7 @@ model Participant {
 
 model Question {
   id           Int           @id @default(autoincrement())
-  question     String
+  question     String        @db.Text()
   options      String        @db.Text()
   answer       String
   createdAt    DateTime      @default(now())
