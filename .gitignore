@@ -5,4 +5,3 @@ bcrypt.ts
 src
 nodemon.json
 tsconfig.json
-migrations
