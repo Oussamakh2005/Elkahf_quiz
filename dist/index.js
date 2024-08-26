@@ -20,6 +20,4 @@ app.use((0, cors_1.default)());
 app.use('/api', Router_1.default);
 //set error response middelware :
 app.use(ExceptionResponse_1.default);
-app.listen(process.env.PORT, () => {
-    console.log("app listen to PORT : " + process.env.PORT);
-});
+app.listen(process.env.PORT);
