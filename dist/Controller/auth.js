@@ -23,7 +23,8 @@ class Auth {
             if (req.body.username === (admin === null || admin === void 0 ? void 0 : admin.username) && (0, bcrypt_1.compareSync)(req.body.password, admin === null || admin === void 0 ? void 0 : admin.password)) {
                 const token = token_1.default.generate(admin === null || admin === void 0 ? void 0 : admin.id);
                 res.cookie("token", token, {
-                    maxAge: 1000 * 60 * 60 * 24
+                    maxAge: 1000 * 60 * 60 * 24,
+                    sameSite: "none"
                 });
                 res.status(200).json({
                     ok: true,
