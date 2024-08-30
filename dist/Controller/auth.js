@@ -29,6 +29,7 @@ class Auth {
                 res.status(200).json({
                     ok: true,
                     msg: "تم تسجيل الدخول بنجاح",
+                    data: token
                 });
             }
             else {
