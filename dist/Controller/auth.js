@@ -19,13 +19,15 @@ const BadRequest_1 = __importDefault(require("../Tools/HttpException/BadRequest"
 class Auth {
     static login(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
+            console.log(req.body);
             const admin = yield prismaClient_1.default.admin.findFirst({});
             if (req.body.username === (admin === null || admin === void 0 ? void 0 : admin.username) && (0, bcrypt_1.compareSync)(req.body.password, admin === null || admin === void 0 ? void 0 : admin.password)) {
                 const token = token_1.default.generate(admin === null || admin === void 0 ? void 0 : admin.id);
-                res.cookie("token", token, {
-                    maxAge: 1000 * 60 * 60 * 24,
-                    sameSite: "none"
-                });
+                /* res.cookie("token" , token ,{
+                     maxAge : 1000 * 60 * 60 * 24,
+                     sameSite : "strict"
+                 });*/
+                console.log(`here : ${token}`);
                 res.status(200).json({
                     ok: true,
                     msg: "تم تسجيل الدخول بنجاح",

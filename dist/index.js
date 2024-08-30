@@ -16,7 +16,9 @@ app.use(express_1.default.json());
 app.use((0, cookie_parser_1.default)());
 //set cors :
 app.use((0, cors_1.default)({
+    origin: process.env.CLIENT_ORIGIN,
     credentials: true,
+    optionsSuccessStatus: 200
 }));
 //set routers :
 app.use('/api', Router_1.default);
