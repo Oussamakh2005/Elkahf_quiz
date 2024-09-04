@@ -7,16 +7,17 @@ const express_1 = __importDefault(require("express"));
 const dotenv_1 = __importDefault(require("dotenv"));
 const ExceptionResponse_1 = __importDefault(require("./Tools/ExceptionResponse"));
 const Router_1 = __importDefault(require("./Router"));
-const cookie_parser_1 = __importDefault(require("cookie-parser"));
+//import cookieParser from "cookie-parser";
 const cors_1 = __importDefault(require("cors"));
 dotenv_1.default.config();
 const app = (0, express_1.default)();
 app.use(express_1.default.json());
 //set cookie parser :
-app.use((0, cookie_parser_1.default)());
+//app.use(cookieParser());
 //set cors :
 app.use((0, cors_1.default)({
-    origin: [process.env.CLIENT_ORIGIN, "127.0.0.1:3000"],
+    origin: ["http://127.0.0.1:3000", "http://127.0.0.1:5500", process.env.CLIENT_ORIGIN],
+    methods: ["POST", "GET"],
     credentials: true,
     optionsSuccessStatus: 200
 }));
