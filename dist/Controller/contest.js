@@ -51,6 +51,12 @@ class ContestController {
     static getQuestions(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const question = yield prismaClient_1.default.question.findFirst({});
+            if (!question) {
+                return res.status(200).json({
+                    ok: false,
+                    msg: "لاتوجد أي أسأله حاليا"
+                });
+            }
             let questions = question === null || question === void 0 ? void 0 : question.question.split('-');
             let options = question === null || question === void 0 ? void 0 : question.options.split('-');
             let answers = question === null || question === void 0 ? void 0 : question.answer.split('-');

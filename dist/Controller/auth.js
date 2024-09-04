@@ -19,7 +19,6 @@ const BadRequest_1 = __importDefault(require("../Tools/HttpException/BadRequest"
 class Auth {
     static login(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            console.log(req.body);
             const admin = yield prismaClient_1.default.admin.findFirst({});
             console.log(admin === null || admin === void 0 ? void 0 : admin.username);
             if (req.body.username === (admin === null || admin === void 0 ? void 0 : admin.username) && (0, bcrypt_1.compareSync)(req.body.password, admin === null || admin === void 0 ? void 0 : admin.password)) {
@@ -28,7 +27,6 @@ class Auth {
                      maxAge : 1000 * 60 * 60 * 24,
                      sameSite : "strict"
                  });*/
-                console.log(`here : ${token}`);
                 res.status(200).json({
                     ok: true,
                     msg: "تم تسجيل الدخول بنجاح",
@@ -36,7 +34,7 @@ class Auth {
                 });
             }
             else {
-                throw new BadRequest_1.default("البيانات المقدمة خاطئة", 401);
+                throw new BadRequest_1.default("البيانات المقدمة خاطئة");
             }
         });
     }

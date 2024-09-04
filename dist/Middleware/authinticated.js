@@ -19,26 +19,26 @@ const InternalException_1 = __importDefault(require("../Tools/HttpException/Inte
 class Authinticated {
     static main(req, res, next) {
         return __awaiter(this, void 0, void 0, function* () {
-            if (!req.cookies.token) {
-                next(new root_1.default("الدخول غير مصرح", 401, null));
+            if (!req.headers.token) {
+                next(new root_1.default("الدخول غير مصرح", 401));
             }
             else {
                 try {
-                    const payload = token_1.default.verify(req.cookies.token);
+                    const payload = token_1.default.verify(req.headers.token);
                     const admin = prismaClient_1.default.admin.findFirst({
                         where: {
                             id: payload.userId
                         }
                     });
                     if (!admin) {
-                        next(new root_1.default("الدخول غير مصرح", 401, null));
+                        next(new root_1.default("الدخول غير مصرح", 401));
                     }
                     else {
                         next();
                     }
                 }
                 catch (err) {
-                    next(new InternalException_1.default("خطأ ما قد حدث", null));
+                    next(new InternalException_1.default("خطأ ما قد حدث"));
                 }
             }
         });

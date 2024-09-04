@@ -4,7 +4,6 @@ const exceptionResponse = (exception, req, res, next) => {
     return res.status(exception.status).json({
         ok: false,
         msg: exception.message,
-        err: exception.error
     });
 };
 exports.default = exceptionResponse;

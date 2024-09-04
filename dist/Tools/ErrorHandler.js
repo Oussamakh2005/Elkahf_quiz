@@ -27,10 +27,10 @@ const errorHandler = (method) => {
                 exception = err;
             }
             else if (err instanceof zod_1.ZodError) {
-                exception = new BadRequest_1.default("البيانات المقدمة خاطئة", null);
+                exception = new BadRequest_1.default("البيانات المقدمة خاطئة");
             }
             else {
-                exception = new InternalException_1.default("خطأ ما قد حدث", null);
+                exception = new InternalException_1.default("خطأ ما قد حدث");
             }
             next(exception);
         }

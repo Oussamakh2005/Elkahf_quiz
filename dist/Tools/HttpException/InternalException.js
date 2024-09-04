@@ -5,8 +5,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const root_1 = __importDefault(require("./root"));
 class InternalException extends root_1.default {
-    constructor(message, err) {
-        super(message, 500, null);
+    constructor(message) {
+        super(message, 500);
     }
 }
 exports.default = InternalException;

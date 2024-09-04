@@ -27,7 +27,7 @@ class ParticipantController {
                     },
                 });
                 if (participant) {
-                    throw new root_1.default("هذا الرقم تم إستخدامه بالفعل", 400, null);
+                    throw new root_1.default("هذا الرقم تم إستخدامه بالفعل", 400);
                 }
                 else {
                     const question = yield ts.question.findFirst({
@@ -82,6 +82,12 @@ class ParticipantController {
                 },
                 skip: +(req.query.skip || 0),
             });
+            if (participants.length === 0) {
+                return res.json({
+                    ok: false,
+                    msg: "لا يوجد أي مشاركين حاليا"
+                });
+            }
             return res.status(200).json({
                 ok: true,
                 data: participants,
@@ -98,6 +104,12 @@ class ParticipantController {
                     id: true,
                 },
             });
+            if (participants.length === 0) {
+                return res.json({
+                    ok: false,
+                    msg: "لا يوجد أي مشاركين حاليا"
+                });
+            }
             let idArr = [];
             participants.forEach((participant) => {
                 idArr.push(participant.id);
