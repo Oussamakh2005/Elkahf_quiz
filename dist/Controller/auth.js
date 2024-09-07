@@ -20,7 +20,6 @@ class Auth {
     static login(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const admin = yield prismaClient_1.default.admin.findFirst({});
-            console.log(admin === null || admin === void 0 ? void 0 : admin.username);
             if (req.body.username === (admin === null || admin === void 0 ? void 0 : admin.username) && (0, bcrypt_1.compareSync)(req.body.password, admin === null || admin === void 0 ? void 0 : admin.password)) {
                 const token = token_1.default.generate(admin === null || admin === void 0 ? void 0 : admin.id);
                 /* res.cookie("token" , token ,{

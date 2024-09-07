@@ -16,7 +16,7 @@ app.use(express_1.default.json());
 //app.use(cookieParser());
 //set cors :
 app.use((0, cors_1.default)({
-    origin: ["http://127.0.0.1:3000", "http://127.0.0.1:5500", process.env.CLIENT_ORIGIN],
+    origin: [process.env.CLIENT_ORIGIN],
     methods: ["POST", "GET"],
     credentials: true,
     optionsSuccessStatus: 200
